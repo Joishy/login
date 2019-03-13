@@ -1,0 +1,29 @@
+<html>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#login").click(function () {
+            var password = $("#val1").val();
+            var confirmPassword = $("#val2").val();
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        });
+    });
+</script>
+</head>
+<body>
+<form action={% url 'reg' %} method='GET'>
+<label>UserName<label><input type="text" name="name"  required><br><br>
+<label>Password</label><input type="password" name="pass" id="val1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  oninvalid="this.setCustomValidity('Must contain at least one number and one uppercase and lowercaseletter, and at least 8 or more characters')"  required><br><br>
+<label>Confirm Password</label><input type="password" id="val2" required><br><br>
+<lable>Contact No</label> <input type="tel" name="mobile"  pattern="[7-9]{1}[0-9]{9}" required><br><br>
+<label>Email-Id </label><input type="email" name="email" required><br><br>
+<button type="submit" name="login" id="login" value="submit">Login</button>
+</form>
+</body>
+</html>
