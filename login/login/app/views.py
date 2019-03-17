@@ -37,11 +37,16 @@ def reg(request):
 	mycursor = mydb.cursor()
 	
 #Inserting value into the database
-	sql= "INSERT INTO customer_db VALUES (%s, %s, %s, %s)"
-	val = (uname, password, umobile, uemail)
-	mycursor.execute(sql,val)
-	mydb.commit()
-	return render(request,'home.html', context=None)
+	try:
+	 sql= "INSERT INTO customer_db VALUES (%s, %s, %s, %s)"
+	 val = (uname, password, umobile, uemail)
+	 mycursor.execute(sql,val)
+	 mydb.commit()
+	 return render(request,'home.html', context=None)
+	
+	except mysql.connector.Error as error :
+		mydb.rollback()
+		return HttpResponse("Creation of Account Failed,User Already exists") 
 
 
 def logging(request):
@@ -57,11 +62,11 @@ def logging(request):
 	)
 	mycursor = mydb.cursor()
 	mycursor.execute("SELECT password FROM customer_db where email=%s", [uemail])
-	myresult = mycursor.fetchall()
+        myresult = mycursor.fetchall()
 	val = myresult[0]
 	verify = sha256_crypt.verify(upasswd, val[0])
 	if(verify == True):
-		return HttpResponse('Welcome User')
+		return render(request,'welcome.html', context=None)
 	else:
 		return HttpResponse("Incorrect UserID or Password")
 	

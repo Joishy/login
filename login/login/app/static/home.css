@@ -1,0 +1,29 @@
+#tab {
+	border-collapse: collapse;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	padding: 8px;
+}
+
+#tab td {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#tab tr:hover { background-color: #ddd;}
+
+ h1 {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #FFFFF0;
+}
+
+ h2 {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: #F0F8FF;
+}
+
+label {
+	font-family: "Trebuchet MS";
+	font-color: "white";
+}
+
+

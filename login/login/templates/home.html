@@ -1,18 +1,63 @@
+{% load static %}
 <html>
-<head><title>
+	<head>
+		<title>welcome to portal</title>
+		<link rel="stylesheet" href="{% static 'home.css' %}">
+	</head>
+	<style>
+ h1 {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        color: #FFFFF0;
+	text-decoration: underline;
+	font-style: italic;
+}
 
-welcome to portal
-</title>
-</head>
-<body>
-<form action={%url 'logging' %}>
-Enter your email address:
-<input type="text" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" title="Enter valid email id" name="email" required><br><br>
-Enter your password:
-<input type="password" name="pass"  required><br><br>
-<input type="Submit" value="Login"></form>
-<form action={% url 'register' %}>
-<input type="Submit" value="Register">
-</form>
-</body>
+ h2 {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        color: #F0F8FF;
+	font-style: italic;
+}
+label {
+	font-weight: bold;
+	color: white;
+}
+input {
+	border-radius:5px;
+        padding: 10px;
+}
+
+</style>
+	<body background="{% static '0430a263502e44a9c594096cc312982e.jpg' %}">
+		<table width= "100% class="tab">
+			<tr>
+				<td colspan= "2" background="{% static '0430a263502e44a9c594096cc312982e.jpg' %}">
+				<marquee><h1> Welcome </h1></marquee>
+				</td>
+			</tr>
+		<tr>
+			<td background="{% static '0430a263502e44a9c594096cc312982e.jpg' %}">
+			<h2> Login Here</h2>
+			 <form action={%url 'logging' %}>
+		 	  <table>
+			   <tr>
+				<td><label>Enter your email address:</label></td>
+				<td><input type="text" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" title="Enter valid email id" name="email" required></td>
+			  </tr>
+			  <tr>
+				<td><label>Enter your password:</label></td>
+				<td><input type="password" name="pass"  required><br><br></td>
+		 	 </tr>
+			</table>
+			<input type="Submit" value="Login">
+		</form>
+			</td>
+			<td background="{% static '0430a263502e44a9c594096cc312982e.jpg' %}">
+		<form action={% url 'register' %}>
+			<h2> Register Here</h2>
+			<input type="Submit" value="Register">
+		</form>
+			</td>
+		</tr>
+		</table>
+	</body>
 </html>
